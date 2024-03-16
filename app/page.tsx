@@ -1,6 +1,7 @@
 "use client"
 import CarsFiltersOptions from "@/components/Home/CarsFiltersOptions";
 import CarsList from "@/components/Home/CarsList";
+import Carsf from "@/components/Home/Carsf";
 import Hero from "@/components/Home/Hero";
 import Searchinput from "@/components/Home/Searchinput";
 import { useEffect, useState } from "react";
@@ -23,6 +24,7 @@ export default function Home() {
       <Hero />
       <Searchinput />
       <CarsFiltersOptions />
+      <Carsf/>
       <CarsList carsLists={carsLists}/>
     </div>
   );
