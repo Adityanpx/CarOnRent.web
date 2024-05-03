@@ -2,7 +2,7 @@ import React from 'react'
 
 function Hero() {
   return (
-    <div className='grid grid-cols-1 md:grid-cols-2'>
+    <div className='grid  bg- grid-cols-1 md:grid-cols-2'>
       <div>
         <h2 className='text-[40px] md:text-[60px] font-bold'  >
           Premiun car Rental in your area</h2>
