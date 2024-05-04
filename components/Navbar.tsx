@@ -1,11 +1,13 @@
-"use clientgit "
+"use client"
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { UserButton } from '@clerk/nextjs';
 import { PiShoppingCartBold } from "react-icons/pi";
+import CarCards from './CarCards'; // Assuming CarCards component is in a separate file
 
 function Navbar() {
   const [showCart, setShowCart] = useState(false);
+  const [cartItems, setCartItems] = useState([]);
   const sidebarRef = useRef(null);
   const buttonRef = useRef(null);
 
@@ -15,6 +17,10 @@ function Navbar() {
 
   const handleCloseCart = () => {
     setShowCart(false);
+  };
+
+  const handleAddToCart = (car) => {
+    setCartItems([...cartItems, car]);
   };
 
   useEffect(() => {
@@ -50,10 +56,10 @@ function Navbar() {
         <h2 className='hover:bg-black px-3 p-2 rounded-md hover:text-white cursor-pointer'>Contact Us</h2>
       </div>
 
-      <div className='flex gap-4 items-center'>
+      <div className='flex gap-4 md:gap-10 items-center'>
         <UserButton />
         <button ref={buttonRef} onClick={handleCartButtonClick}>
-          <h1 className='text-3xl'>
+          <h1 className='text-3xl md:mr-6'>
             <PiShoppingCartBold />
           </h1>
         </button>
@@ -74,10 +80,15 @@ function Navbar() {
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
               transition={{ delay: 0.1, duration: 0.3 }}
-              className="bg-white p-6 w-80 h-full"
+              className="bg-white p-6 w-80 md:w-96 h-auto"
             >
               <h2 className="text-3xl font-bold mb-4">Add to Cart</h2>
-              <button onClick={handleCloseCart} className="text-blue-500 hover:text-blue-700">Close</button>
+              <button onClick={handleCloseCart} className="text-blue-500  hover:text-blue-700">Close</button>
+              <div>
+                {cartItems.map((item, index) => (
+                  <div key={index}>{item.name}</div>
+                ))}
+              </div>
             </motion.div>
           </motion.div>
         )}

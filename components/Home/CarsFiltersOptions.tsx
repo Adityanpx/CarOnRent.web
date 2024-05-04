@@ -16,7 +16,7 @@ function CarsFiltersOptions() {
           <option>max to min</option>
         </select>
 
-        <select className="select select-bordered
+        <select className="select  bg-white select-bordered
         hidden  md:block w-full max-w-xs">
           <option disabled selected>
             Manufactural
